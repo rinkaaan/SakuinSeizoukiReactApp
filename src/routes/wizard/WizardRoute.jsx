@@ -1,5 +1,5 @@
 import { Wizard } from '@cloudscape-design/components'
-import Engine from './stepComponents/step1'
+import UploadPdf from './stepComponents/step1'
 import Details from './stepComponents/step2'
 import Advanced from './stepComponents/step3'
 import Review from './stepComponents/step4'
@@ -8,9 +8,9 @@ import { DEFAULT_STEP_INFO } from './steps-config.jsx'
 
 const steps = [
   {
-    title: 'Select engine type',
-    stateKey: 'engine',
-    StepContent: Engine,
+    title: 'Upload PDF',
+    stateKey: 'uploadPdf',
+    StepContent: UploadPdf,
   },
   {
     title: 'Specify instance details',

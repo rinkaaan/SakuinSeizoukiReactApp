@@ -1,16 +1,7 @@
 import React from 'react'
-import {
-  Box,
-  Button,
-  ColumnLayout,
-  Container,
-  ExpandableSection,
-  Header,
-  SpaceBetween,
-} from '@cloudscape-design/components'
-import { getEngineLabel, getEngineLicense } from './step1'
+import { Box, Button, ColumnLayout, Container, ExpandableSection, Header, SpaceBetween } from '@cloudscape-design/components'
 
-const Review = ({ info: { engine, details, advanced }, setActiveStepIndex }) => {
+const Review = ({ info: { uploadPdf, engine, details, advanced }, setActiveStepIndex }) => {
   return (
     <Box margin={{ bottom: 'l' }}>
       <SpaceBetween size="xxl">
@@ -35,13 +26,8 @@ const Review = ({ info: { engine, details, advanced }, setActiveStepIndex }) => 
           >
             <ColumnLayout columns={2} variant="text-grid">
               <div>
-                <Box variant="awsui-key-label">Engine</Box>
-                <div>{getEngineLabel(engine.engineOption)}</div>
-              </div>
-
-              <div>
-                <Box variant="awsui-key-label">License model</Box>
-                <div>{getEngineLicense(engine.engineOption)}</div>
+                <Box variant='awsui-key-label'>PDF</Box>
+                <div>{uploadPdf.pdfName}</div>
               </div>
 
               {engine.engineOption === 'aurora' ? (
