@@ -5,6 +5,7 @@ import Advanced from './stepComponents/step3'
 import Review from './stepComponents/step4'
 import { useCallback, useState } from 'react'
 import { DEFAULT_STEP_INFO } from './steps-config.jsx'
+import { useNavigate } from 'react-router-dom'
 
 const steps = [
   {
@@ -41,6 +42,7 @@ const i18nStrings = {
 const useWizard = () => {
   const [activeStepIndex, setActiveStepIndex] = useState(0)
   const [stepsInfo, setStepsInfo] = useState(DEFAULT_STEP_INFO)
+  const navigate = useNavigate()
 
   const onStepInfoChange = useCallback(
     (stateKey, newStepState) => {
@@ -65,6 +67,7 @@ const useWizard = () => {
 
   const onCancel = () => {
     console.log('Cancel')
+    navigate('/welcome')
   }
 
   const onSubmit = () => {

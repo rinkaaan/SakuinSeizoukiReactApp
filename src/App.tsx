@@ -13,9 +13,8 @@ const router = createBrowserRouter([
         handle: {
           crumbs: () => {
             return {
-              crumb: 'Wizard',
-              title: 'Wizard',
-              path: '/wizard',
+              crumb: 'Home',
+              path: '/',
             }
           },
         },
@@ -24,6 +23,10 @@ const router = createBrowserRouter([
             path: '/wizard',
             lazy: () => import('./routes/wizard/WizardRoute.jsx'),
           },
+          {
+            path: '/welcome',
+            lazy: () => import('./routes/welcome/WelcomeRoute'),
+          },
         ],
       },
     ],
@@ -31,7 +34,7 @@ const router = createBrowserRouter([
   },
   {
     path: '*',
-    Component: () => <Navigate to='/wizard' replace/>,
+    Component: () => <Navigate to='/welcome' replace/>,
   },
 ])
 
