@@ -1,7 +1,7 @@
 import { Link, LinkProps } from '@cloudscape-design/components'
 import { useNavigate } from 'react-router-dom'
 
-export default function CloudLink(props: LinkProps) {
+export default function CloudLink({ href, ...props }: LinkProps) {
   const navigate = useNavigate()
 
   return (
@@ -9,9 +9,8 @@ export default function CloudLink(props: LinkProps) {
       {...props}
       onFollow={e => {
         e.preventDefault()
-        const { detail } = e
-        if (!detail.href) return
-        navigate(detail.href)
+        if (!href) return
+        navigate(href)
       }}
     />
   )

@@ -7,7 +7,7 @@ export default function CloudBreadcrumbGroup(props: BreadcrumbGroupProps) {
   return (
     <BreadcrumbGroup
       {...props}
-      onFollow={e => {
+      onClick={e => {
         e.preventDefault()
         const { detail } = e
         if (!detail.href) return

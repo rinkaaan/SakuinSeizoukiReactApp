@@ -571,39 +571,39 @@ export const SUBNET_OPTIONS = [
 
 export const SECURITY_GROUPS = [
   {
-    label: 'rds-launch-wizard-1',
+    label: 'rds-launch-steps-1',
     value: '1',
   },
   {
-    label: 'rds-launch-wizard-2',
+    label: 'rds-launch-steps-2',
     value: '2',
   },
   {
-    label: 'rds-launch-wizard-3',
+    label: 'rds-launch-steps-3',
     value: '3',
   },
   {
-    label: 'rds-launch-wizard-4',
+    label: 'rds-launch-steps-4',
     value: '4',
   },
   {
-    label: 'rds-launch-wizard-5',
+    label: 'rds-launch-steps-5',
     value: '5',
   },
   {
-    label: 'rds-launch-wizard-6',
+    label: 'rds-launch-steps-6',
     value: '6',
   },
   {
-    label: 'rds-launch-wizard-7',
+    label: 'rds-launch-steps-7',
     value: '7',
   },
   {
-    label: 'rds-launch-wizard-8',
+    label: 'rds-launch-steps-8',
     value: '8',
   },
   {
-    label: 'rds-launch-wizard-9',
+    label: 'rds-launch-steps-9',
     value: '9',
   },
 ]

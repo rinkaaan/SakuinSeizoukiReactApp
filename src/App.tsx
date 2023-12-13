@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom'
-import WizardLayout from './routes/wizard/WizardLayout'
+import StepsLayout from './routes/steps/StepsLayout'
 
 const router = createBrowserRouter([
   {
@@ -9,32 +9,39 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        Component: WizardLayout,
+        Component: StepsLayout,
         handle: {
           crumbs: () => {
             return {
               crumb: 'Home',
-              path: '/',
+              path: '/home',
             }
           },
         },
         children: [
           {
-            path: '/wizard',
-            lazy: () => import('./routes/wizard/WizardRoute.jsx'),
+            path: '/steps',
+            lazy: () => import('./routes/steps/StepsRoute.js'),
+            handle: {
+              crumbs: () => {
+                return {
+                  crumb: 'Steps',
+                  title: 'Steps',
+                }
+              }
+            },
           },
           {
-            path: '/welcome',
+            path: '/home',
             lazy: () => import('./routes/welcome/WelcomeRoute'),
           },
         ],
       },
     ],
-
   },
   {
     path: '*',
-    Component: () => <Navigate to='/welcome' replace/>,
+    Component: () => <Navigate to='/home' replace/>,
   },
 ])
 

@@ -6,15 +6,14 @@ export default function BreadCrumbs() {
   const crumbs = matches
     .filter((match) => Boolean(match.handle?.crumbs))
     .map((match) => match.handle.crumbs())
-
-  const crumbs2 = crumbs.map((crumb) => {
-    return {
-      text: crumb.crumb,
-      href: crumb.path,
-    }
-  })
+    .map((crumb) => {
+      return {
+        text: crumb.crumb,
+        href: crumb.path,
+      }
+    })
 
   return (
-    <CloudBreadcrumbGroup items={crumbs2} />
+    <CloudBreadcrumbGroup items={crumbs}/>
   )
 }

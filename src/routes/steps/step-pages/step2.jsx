@@ -1,6 +1,6 @@
 import React from 'react'
 import { Alert, Box, ColumnLayout, Container, ExpandableSection, FormField, Header, Input, RadioGroup, Select, SpaceBetween } from '@cloudscape-design/components'
-import { AVAILABILITY_ZONES, CLASS_OPTIONS, STORAGE_TYPES, TIME_ZONES } from '../steps-config'
+import { AVAILABILITY_ZONES, CLASS_OPTIONS, STORAGE_TYPES, TIME_ZONES } from '../StepsConfig.jsx'
 import { getFieldOnChange } from '../utils'
 
 const InstanceOptions = ({
@@ -103,7 +103,8 @@ const InstanceOptions = ({
           description='Higher allocated storage may improve IOPS performance.'
           constraintText='Min: 20, Max: 16384.'
         >
-          <div className='custom-input-small'>
+          {/*<div className='custom-input-small'>*/}
+          <div style={{ width: '11rem', display: 'inline-block' }}>
             <Input type='number' autocomplete={true} controlId='storage' value={storage} onChange={onStorageChange}/>
           </div>
           <Box variant='span' padding={{ left: 's' }}>

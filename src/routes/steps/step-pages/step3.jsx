@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Container, ExpandableSection, FormField, Header, RadioGroup, Select, SpaceBetween } from '@cloudscape-design/components'
-import { BACKUP_PERIODS, FAILOVER_PRIORITIES, SECURITY_GROUPS, SUBNET_OPTIONS, VPC_OPTIONS } from '../steps-config'
+import { BACKUP_PERIODS, FAILOVER_PRIORITIES, SECURITY_GROUPS, SUBNET_OPTIONS, VPC_OPTIONS } from '../StepsConfig.jsx'
 import { getFieldOnChange } from '../utils'
 
 const NetworkAndSecurity = ({

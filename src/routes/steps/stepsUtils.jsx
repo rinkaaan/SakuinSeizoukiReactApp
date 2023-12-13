@@ -1,13 +1,12 @@
-import { Wizard } from '@cloudscape-design/components'
-import UploadPdf from './stepComponents/step1'
-import Details from './stepComponents/step2'
-import Advanced from './stepComponents/step3'
-import Review from './stepComponents/step4'
+import UploadPdf from './step-pages/step1.jsx'
+import Details from './step-pages/step2.jsx'
+import Advanced from './step-pages/step3.jsx'
+import Review from './step-pages/step4.jsx'
+import { DEFAULT_STEP_INFO } from './StepsConfig.jsx'
 import { useCallback, useState } from 'react'
-import { DEFAULT_STEP_INFO } from './steps-config.jsx'
 import { useNavigate } from 'react-router-dom'
 
-const steps = [
+export const steps = [
   {
     title: 'Upload PDF',
     stateKey: 'uploadPdf',
@@ -30,7 +29,7 @@ const steps = [
   },
 ]
 
-const i18nStrings = {
+export const i18nStrings = {
   submitButton: 'Create DB instance',
   stepNumberLabel: stepNumber => `Step ${stepNumber}`,
   collapsedStepsLabel: (stepNumber, stepsCount) => `Step ${stepNumber} of ${stepsCount}`,
@@ -39,7 +38,7 @@ const i18nStrings = {
   nextButton: 'Next',
 }
 
-const useWizard = () => {
+export const useWizard = () => {
   const [activeStepIndex, setActiveStepIndex] = useState(0)
   const [stepsInfo, setStepsInfo] = useState(DEFAULT_STEP_INFO)
   const navigate = useNavigate()
@@ -67,7 +66,7 @@ const useWizard = () => {
 
   const onCancel = () => {
     console.log('Cancel')
-    navigate('/welcome')
+    navigate('/home')
   }
 
   const onSubmit = () => {
@@ -83,38 +82,4 @@ const useWizard = () => {
     onCancel,
     onSubmit,
   }
-}
-
-export function Component() {
-  const {
-    activeStepIndex,
-    stepsInfo,
-    setActiveStepIndexAndCloseTools,
-    onStepInfoChange,
-    onNavigate,
-    onCancel,
-    onSubmit,
-  } = useWizard()
-
-  const wizardSteps = steps.map(({ title, stateKey, StepContent }) => ({
-    title,
-    content: (
-      <StepContent
-        info={stepsInfo}
-        onChange={newStepState => onStepInfoChange(stateKey, newStepState)}
-        setActiveStepIndex={setActiveStepIndexAndCloseTools}
-      />
-    ),
-  }))
-
-  return (
-    <Wizard
-      steps={wizardSteps}
-      activeStepIndex={activeStepIndex}
-      i18nStrings={i18nStrings}
-      onNavigate={onNavigate}
-      onCancel={onCancel}
-      onSubmit={onSubmit}
-    />
-  )
 }
