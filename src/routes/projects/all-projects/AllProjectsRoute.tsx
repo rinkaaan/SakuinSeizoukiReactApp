@@ -1,13 +1,13 @@
 import CloudTable from "@cloudscape-design/components/table"
 import Box from "@cloudscape-design/components/box"
 import SpaceBetween from "@cloudscape-design/components/space-between"
-import Button from "@cloudscape-design/components/button"
 import { Fragment, useState } from "react"
-import AllPetsHeader from "./AllPetsHeader.jsx"
+import Header from "./Header.jsx"
 import { TextFilter } from "@cloudscape-design/components"
 import CloudLink from "../../../components/CloudLink.tsx"
 import { useLoaderData } from "react-router-dom"
 import { formatDate } from "../../../common/typedUtils.ts"
+import CloudButton from "../../../components/CloudButton.tsx"
 
 interface LoaderData {
   pets: any[];
@@ -42,16 +42,10 @@ export function Component() {
         columnDefinitions={[
           {
             id: "name",
-            header: "Pet name",
+            header: "Project name",
             cell: item => <CloudLink href={`/pets/details/${item.id}`}>{item.name}</CloudLink>,
             sortingField: "name",
             isRowHeader: true,
-          },
-          {
-            id: "animal_type",
-            header: "Animal type",
-            cell: item => item.animal_type,
-            sortingField: "animal_type",
           },
           {
             id: "created_at",
@@ -66,37 +60,33 @@ export function Component() {
             visible: true,
           },
           {
-            id: "animal_type",
-            visible: true,
-          },
-          {
             id: "created_at",
             visible: true,
           },
         ]}
         items={pets}
-        loadingText='Loading resources'
-        selectionType='multi'
-        trackBy='id'
-        variant='full-page'
+        loadingText="Loading projects"
+        selectionType="multi"
+        trackBy="id"
+        variant="full-page"
         empty={
           <Box
             margin={{ vertical: "xs" }}
-            textAlign='center'
-            color='inherit'
+            textAlign="center"
+            color="inherit"
           >
-            <SpaceBetween size='m'>
-              <b>No resources</b>
-              <Button>Create resource</Button>
+            <SpaceBetween size="m">
+              <b>No projects</b>
+              <CloudButton href="/projects/new">Create project</CloudButton>
             </SpaceBetween>
           </Box>
         }
-        header={<AllPetsHeader selectedItemsCount={selectedItems.length}/>}
+        header={<Header selectedItemsCount={selectedItems.length}/>}
         filter={
           <TextFilter
-            filteringPlaceholder='Find pets'
-            filteringClearAriaLabel='Clear'
-            filteringText=''
+            filteringPlaceholder="Search projects"
+            filteringClearAriaLabel="Clear"
+            filteringText=""
           />
         }
       />

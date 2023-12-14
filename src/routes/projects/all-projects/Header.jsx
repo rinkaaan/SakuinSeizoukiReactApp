@@ -2,9 +2,9 @@ import React from "react"
 import { Button, Header as CloudHeader, SpaceBetween } from "@cloudscape-design/components"
 import CloudButton from "../../../components/CloudButton"
 
-export default function AllPetsHeader({
-  title = "All Projects",
-  createButtonText = "Create pet",
+export default function Header({
+  title = "Projects",
+  createButtonText = "Create project",
   extraActions = null,
   selectedItemsCount,
   ...props

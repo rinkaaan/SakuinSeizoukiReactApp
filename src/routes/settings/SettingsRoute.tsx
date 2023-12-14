@@ -1,7 +1,9 @@
 import { Container, ContentLayout, Header, SpaceBetween, TextContent } from "@cloudscape-design/components"
 import { Form, useLoaderData } from "react-router-dom"
-import { BookIndexService, TimeOut, TimeService } from "../../../openapi-client"
+import { SettingsService, TimeOut, TimeService } from "../../../openapi-client"
 import CloudButton from "../../components/CloudButton.tsx"
+import { useEffect } from "react"
+import Cookies from "js-cookie"
 
 interface LoaderData {
   time: TimeOut
@@ -14,12 +16,17 @@ export async function loader(): Promise<LoaderData> {
 }
 
 export async function action() {
-  await BookIndexService.getBookIndex()
+  await SettingsService.postSettingsAppDataDirectory()
   return null
 }
 
 export function Component() {
   const { time } = useLoaderData() as LoaderData
+
+  useEffect(() => {
+    const appDataDir = Cookies.get("app-data-directory")
+    console.log(appDataDir)
+  }, [])
 
   return (
     <Form method='POST'>
