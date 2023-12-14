@@ -1,5 +1,5 @@
-import { Button, ButtonProps } from '@cloudscape-design/components'
-import { useNavigate } from 'react-router-dom'
+import { Button, ButtonProps } from "@cloudscape-design/components"
+import { useNavigate } from "react-router-dom"
 
 export default function CloudButton({ href, onClick, formAction, ...props }: ButtonProps) {
   const navigate = useNavigate()
@@ -9,7 +9,7 @@ export default function CloudButton({ href, onClick, formAction, ...props }: But
       {...props}
       onClick={e => {
         if (!onClick) {
-          if (formAction !== 'submit') {
+          if (formAction !== "submit") {
             e.preventDefault()
           }
           if (!href) return

@@ -1,9 +1,9 @@
-import React from 'react'
-import { Box, Button, ColumnLayout, Container, ExpandableSection, Header, SpaceBetween } from '@cloudscape-design/components'
+import React from "react"
+import { Box, Button, ColumnLayout, Container, ExpandableSection, Header, SpaceBetween } from "@cloudscape-design/components"
 
 const Review = ({ info: { uploadPdf, engine, details, advanced }, setActiveStepIndex }) => {
   return (
-    <Box margin={{ bottom: 'l' }}>
+    <Box margin={{ bottom: "l" }}>
       <SpaceBetween size="xxl">
         <SpaceBetween size="xs" className="step-1-review">
           <Header
@@ -30,7 +30,7 @@ const Review = ({ info: { uploadPdf, engine, details, advanced }, setActiveStepI
                 <div>{uploadPdf.pdfName}</div>
               </div>
 
-              {engine.engineOption === 'aurora' ? (
+              {engine.engineOption === "aurora" ? (
                 <div>
                   <Box variant="awsui-key-label">Edition</Box>
                   <div>{engine.edition}</div>
@@ -42,7 +42,7 @@ const Review = ({ info: { uploadPdf, engine, details, advanced }, setActiveStepI
                 </div>
               )}
 
-              {engine.engineOption !== 'aurora' ? (
+              {engine.engineOption !== "aurora" ? (
                 <div>
                   <Box variant="awsui-key-label">Version</Box>
                   <div>{engine.version.label}</div>
@@ -126,12 +126,12 @@ const Review = ({ info: { uploadPdf, engine, details, advanced }, setActiveStepI
               <ColumnLayout columns={2} variant="text-grid">
                 <div>
                   <Box variant="awsui-key-label">DB instance identifier</Box>
-                  <div>{details.identifier || 'example-instance-identifier'}</div>
+                  <div>{details.identifier || "example-instance-identifier"}</div>
                 </div>
 
                 <div>
                   <Box variant="awsui-key-label">Primary username</Box>
-                  <div>{details.username || 'example-username'}</div>
+                  <div>{details.username || "example-username"}</div>
                 </div>
 
                 <div>

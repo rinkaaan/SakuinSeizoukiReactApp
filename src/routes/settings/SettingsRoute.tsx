@@ -1,7 +1,7 @@
-import { Container, ContentLayout, Header, SpaceBetween, TextContent } from '@cloudscape-design/components'
-import { Form, useLoaderData } from 'react-router-dom'
-import { BookIndexService, TimeOut, TimeService } from '../../../openapi-client'
-import CloudButton from '../../components/CloudButton.tsx'
+import { Container, ContentLayout, Header, SpaceBetween, TextContent } from "@cloudscape-design/components"
+import { Form, useLoaderData } from "react-router-dom"
+import { BookIndexService, TimeOut, TimeService } from "../../../openapi-client"
+import CloudButton from "../../components/CloudButton.tsx"
 
 interface LoaderData {
   time: TimeOut
@@ -25,7 +25,7 @@ export function Component() {
     <Form method='POST'>
       <ContentLayout
         header={
-          <Header variant='h1'>Welcome to 索引製造機</Header>
+          <Header variant='h1'>Settings</Header>
         }
       >
         <Container
@@ -35,8 +35,7 @@ export function Component() {
             <TextContent>
               <p>The current time is {time.time}</p>
             </TextContent>
-            <CloudButton href='/steps'>Get started</CloudButton>
-            <CloudButton formAction='submit'>Download file</CloudButton>
+            <CloudButton formAction='submit'>Set app data directory</CloudButton>
           </SpaceBetween>
         </Container>
       </ContentLayout>

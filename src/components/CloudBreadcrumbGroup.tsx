@@ -1,5 +1,5 @@
-import { BreadcrumbGroup, BreadcrumbGroupProps } from '@cloudscape-design/components'
-import { useNavigate } from 'react-router-dom'
+import { BreadcrumbGroup, BreadcrumbGroupProps } from "@cloudscape-design/components"
+import { useNavigate } from "react-router-dom"
 
 export default function CloudBreadcrumbGroup(props: BreadcrumbGroupProps) {
   const navigate = useNavigate()

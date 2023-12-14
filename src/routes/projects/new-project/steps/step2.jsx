@@ -1,7 +1,7 @@
-import React from 'react'
-import { Alert, Box, ColumnLayout, Container, ExpandableSection, FormField, Header, Input, RadioGroup, Select, SpaceBetween } from '@cloudscape-design/components'
-import { AVAILABILITY_ZONES, CLASS_OPTIONS, STORAGE_TYPES, TIME_ZONES } from '../StepsConfig.jsx'
-import { getFieldOnChange } from '../utils'
+import React from "react"
+import { Alert, Box, ColumnLayout, Container, ExpandableSection, FormField, Header, Input, RadioGroup, Select, SpaceBetween } from "@cloudscape-design/components"
+import { AVAILABILITY_ZONES, CLASS_OPTIONS, STORAGE_TYPES, TIME_ZONES } from "../StepsConfig.jsx"
+import { getFieldOnChange } from "../utils.js"
 
 const InstanceOptions = ({
                            timeZone,
@@ -13,13 +13,13 @@ const InstanceOptions = ({
                            storage,
                            onChange,
                          }) => {
-  const onTimeZoneChange = getFieldOnChange('select', 'timeZone', onChange)
-  const onAvailabilityZoneChange = getFieldOnChange('select', 'availabilityZone', onChange)
-  const onPortChange = getFieldOnChange('input', 'port', onChange)
-  const onIamAuthChange = getFieldOnChange('radio', 'iamAuth', onChange)
-  const onInstanceClassChange = getFieldOnChange('select', 'instanceClass', onChange)
-  const onStorageTypeChange = getFieldOnChange('radio', 'storageType', onChange)
-  const onStorageChange = getFieldOnChange('input', 'storage', onChange)
+  const onTimeZoneChange = getFieldOnChange("select", "timeZone", onChange)
+  const onAvailabilityZoneChange = getFieldOnChange("select", "availabilityZone", onChange)
+  const onPortChange = getFieldOnChange("input", "port", onChange)
+  const onIamAuthChange = getFieldOnChange("radio", "iamAuth", onChange)
+  const onInstanceClassChange = getFieldOnChange("select", "instanceClass", onChange)
+  const onStorageTypeChange = getFieldOnChange("radio", "storageType", onChange)
+  const onStorageChange = getFieldOnChange("input", "storage", onChange)
 
   return (
     <Container
@@ -62,13 +62,13 @@ const InstanceOptions = ({
               <RadioGroup
                 items={[
                   {
-                    value: 'on',
-                    label: 'Turn on IAM DB authentication',
-                    description: 'Manage your database user credentials through AWS IAM users and roles.',
+                    value: "on",
+                    label: "Turn on IAM DB authentication",
+                    description: "Manage your database user credentials through AWS IAM users and roles.",
                   },
                   {
-                    value: 'off',
-                    label: 'Turn off IAM DB authentication',
+                    value: "off",
+                    label: "Turn off IAM DB authentication",
                   },
                 ]}
                 value={iamAuth}
@@ -104,10 +104,10 @@ const InstanceOptions = ({
           constraintText='Min: 20, Max: 16384.'
         >
           {/*<div className='custom-input-small'>*/}
-          <div style={{ width: '11rem', display: 'inline-block' }}>
+          <div style={{ width: "11rem", display: "inline-block" }}>
             <Input type='number' autocomplete={true} controlId='storage' value={storage} onChange={onStorageChange}/>
           </div>
-          <Box variant='span' padding={{ left: 's' }}>
+          <Box variant='span' padding={{ left: "s" }}>
             GiB
           </Box>
         </FormField>
@@ -121,10 +121,10 @@ const InstanceOptions = ({
 }
 
 const NameAndPassword = ({ identifier, username, password, confirmPassword, onChange }) => {
-  const onIdentifierChange = getFieldOnChange('input', 'identifier', onChange)
-  const onUsernameChange = getFieldOnChange('input', 'username', onChange)
-  const onPasswordChange = getFieldOnChange('input', 'password', onChange)
-  const onConfirmPasswordChange = getFieldOnChange('input', 'confirmPassword', onChange)
+  const onIdentifierChange = getFieldOnChange("input", "identifier", onChange)
+  const onUsernameChange = getFieldOnChange("input", "username", onChange)
+  const onPasswordChange = getFieldOnChange("input", "password", onChange)
+  const onConfirmPasswordChange = getFieldOnChange("input", "confirmPassword", onChange)
 
   return (
     <Container header={<Header variant='h2'>Names and password</Header>}>
@@ -162,7 +162,7 @@ const NameAndPassword = ({ identifier, username, password, confirmPassword, onCh
 const Details = ({ info: { details }, setHelpPanelContent, onChange }) => {
   const childProps = { ...details, setHelpPanelContent, onChange }
   return (
-    <Box margin={{ bottom: 'l' }}>
+    <Box margin={{ bottom: "l" }}>
       <SpaceBetween size='l'>
         <InstanceOptions {...childProps} />
         <NameAndPassword {...childProps} />

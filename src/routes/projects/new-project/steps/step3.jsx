@@ -1,7 +1,7 @@
-import React from 'react'
-import { Box, Container, ExpandableSection, FormField, Header, RadioGroup, Select, SpaceBetween } from '@cloudscape-design/components'
-import { BACKUP_PERIODS, FAILOVER_PRIORITIES, SECURITY_GROUPS, SUBNET_OPTIONS, VPC_OPTIONS } from '../StepsConfig.jsx'
-import { getFieldOnChange } from '../utils'
+import React from "react"
+import { Box, Container, ExpandableSection, FormField, Header, RadioGroup, Select, SpaceBetween } from "@cloudscape-design/components"
+import { BACKUP_PERIODS, FAILOVER_PRIORITIES, SECURITY_GROUPS, SUBNET_OPTIONS, VPC_OPTIONS } from "../StepsConfig.jsx"
+import { getFieldOnChange } from "../utils.js"
 
 const NetworkAndSecurity = ({
                               vpc,
@@ -11,11 +11,11 @@ const NetworkAndSecurity = ({
                               encryption,
                               onChange,
                             }) => {
-  const onVPCChange = getFieldOnChange('select', 'vpc', onChange)
-  const onSubnetChange = getFieldOnChange('select', 'subnet', onChange)
-  const onSecurityGroupChange = getFieldOnChange('select', 'securityGroups', onChange)
-  const onAccessibilityChange = getFieldOnChange('radio', 'accessibility', onChange)
-  const onEncryptionChange = getFieldOnChange('radio', 'encryption', onChange)
+  const onVPCChange = getFieldOnChange("select", "vpc", onChange)
+  const onSubnetChange = getFieldOnChange("select", "subnet", onChange)
+  const onSecurityGroupChange = getFieldOnChange("select", "securityGroups", onChange)
+  const onAccessibilityChange = getFieldOnChange("radio", "accessibility", onChange)
+  const onEncryptionChange = getFieldOnChange("radio", "encryption", onChange)
 
   return (
     <Container header={<Header variant='h2'>Network and security</Header>}>
@@ -56,16 +56,16 @@ const NetworkAndSecurity = ({
             onChange={onAccessibilityChange}
             items={[
               {
-                value: 'on',
-                label: 'Turn on public connection',
+                value: "on",
+                label: "Turn on public connection",
                 description:
-                  'EC2 instances and devices outside of the VPC hosting the DB instance will connect to the DB instances. You must also select one or more VPC security groups that specify which EC2 instances and devices can connect to the DB instance.',
+                  "EC2 instances and devices outside of the VPC hosting the DB instance will connect to the DB instances. You must also select one or more VPC security groups that specify which EC2 instances and devices can connect to the DB instance.",
               },
               {
-                value: 'off',
-                label: 'Turn off public connection',
+                value: "off",
+                label: "Turn off public connection",
                 description:
-                  'DB instance will not have a public IP address assigned. No EC2 instance or devices outside of the VPC will be able to connect.',
+                  "DB instance will not have a public IP address assigned. No EC2 instance or devices outside of the VPC will be able to connect.",
               },
             ]}
             value={accessibility}
@@ -79,12 +79,12 @@ const NetworkAndSecurity = ({
             onChange={onEncryptionChange}
             items={[
               {
-                value: 'on',
-                label: 'Turn on encryption',
+                value: "on",
+                label: "Turn on encryption",
                 description:
-                  'Encrypts the given instance. Primary key ids and aliases appear in the list after they have been created using the Key Management Service (KMS) console.',
+                  "Encrypts the given instance. Primary key ids and aliases appear in the list after they have been created using the Key Management Service (KMS) console.",
               },
-              { value: 'off', label: 'Turn off encryption' },
+              { value: "off", label: "Turn off encryption" },
             ]}
             value={encryption}
           />
@@ -102,11 +102,11 @@ const MaintenanceAndMonitoring = ({
                                     monitoring,
                                     onChange,
                                   }) => {
-  const onFailoverChange = getFieldOnChange('select', 'failover', onChange)
-  const onBacktrackChange = getFieldOnChange('radio', 'backtrack', onChange)
-  const onUpgradesChange = getFieldOnChange('radio', 'upgrades', onChange)
-  const onBackupChange = getFieldOnChange('select', 'backup', onChange)
-  const onMonitoringChange = getFieldOnChange('radio', 'monitoring', onChange)
+  const onFailoverChange = getFieldOnChange("select", "failover", onChange)
+  const onBacktrackChange = getFieldOnChange("radio", "backtrack", onChange)
+  const onUpgradesChange = getFieldOnChange("radio", "upgrades", onChange)
+  const onBackupChange = getFieldOnChange("select", "backup", onChange)
+  const onMonitoringChange = getFieldOnChange("radio", "monitoring", onChange)
 
   return (
     <Container
@@ -132,12 +132,12 @@ const MaintenanceAndMonitoring = ({
               <RadioGroup
                 items={[
                   {
-                    value: 'on',
-                    label: 'Turn on backtrack',
+                    value: "on",
+                    label: "Turn on backtrack",
                     description:
-                      'Backtrack lets you quickly move an Aurora database to a prior point in time without needing to restore data from a backup.',
+                      "Backtrack lets you quickly move an Aurora database to a prior point in time without needing to restore data from a backup.",
                   },
-                  { value: 'off', label: 'Turn off backtrack' },
+                  { value: "off", label: "Turn off backtrack" },
                 ]}
                 value={backtrack}
                 onChange={onBacktrackChange}
@@ -152,12 +152,12 @@ const MaintenanceAndMonitoring = ({
           <RadioGroup
             items={[
               {
-                value: 'on',
-                label: 'Turn on auto minor version upgrade',
+                value: "on",
+                label: "Turn on auto minor version upgrade",
                 description:
-                  'Activates automatic upgrades to new minor versions as they are released. The automatic upgrades occur during the maintenance window for the DB instance.',
+                  "Activates automatic upgrades to new-project minor versions as they are released. The automatic upgrades occur during the maintenance window for the DB instance.",
               },
-              { value: 'off', label: 'Turn off auto minor version upgrade' },
+              { value: "off", label: "Turn off auto minor version upgrade" },
             ]}
             value={upgrades}
             onChange={onUpgradesChange}
@@ -180,12 +180,12 @@ const MaintenanceAndMonitoring = ({
             onChange={onMonitoringChange}
             items={[
               {
-                value: 'on',
-                label: 'Turn on enhanced monitoring',
+                value: "on",
+                label: "Turn on enhanced monitoring",
                 description:
-                  'Enhanced monitoring metrics are useful when you want to see how different processes or threads use the CPU.',
+                  "Enhanced monitoring metrics are useful when you want to see how different processes or threads use the CPU.",
               },
-              { value: 'off', label: 'Turn off enhanced monitoring' },
+              { value: "off", label: "Turn off enhanced monitoring" },
             ]}
             value={monitoring}
           />
@@ -198,7 +198,7 @@ const MaintenanceAndMonitoring = ({
 const Advanced = ({ info: { advanced }, setHelpPanelContent, onChange }) => {
   const childProps = { ...advanced, setHelpPanelContent, onChange }
   return (
-    <Box margin={{ bottom: 'l' }}>
+    <Box margin={{ bottom: "l" }}>
       <SpaceBetween size='l'>
         <NetworkAndSecurity {...childProps} />
         <MaintenanceAndMonitoring {...childProps} />

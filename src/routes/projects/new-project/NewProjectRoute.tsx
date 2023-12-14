@@ -1,12 +1,12 @@
-import { Wizard } from '@cloudscape-design/components'
-import { steps, useWizard, i18nStrings } from './stepsUtils.jsx'
-import { ActionFunctionArgs } from 'react-router-dom'
-import { PdfService } from '../../../openapi-client'
+import { Wizard } from "@cloudscape-design/components"
+import { steps, useWizard, i18nStrings } from "./stepsUtils.jsx"
+import { ActionFunctionArgs } from "react-router-dom"
+import { PdfService } from "../../../../openapi-client"
 
 export async function action({ request }: ActionFunctionArgs) {
   const data = await request.formData()
-  const action = data.get('action')
-  if (action === 'upload-pdf') {
+  const action = data.get("action")
+  if (action === "upload-pdf") {
     PdfService.postPdf()
   }
   return null

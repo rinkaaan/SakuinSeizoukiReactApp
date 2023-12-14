@@ -1,41 +1,41 @@
-import UploadPdf from './step-pages/step1.jsx'
-import Details from './step-pages/step2.jsx'
-import Advanced from './step-pages/step3.jsx'
-import Review from './step-pages/step4.jsx'
-import { DEFAULT_STEP_INFO } from './StepsConfig.jsx'
-import { useCallback, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import UploadPdf from "./steps/step1.jsx"
+import Details from "./steps/step2.jsx"
+import Advanced from "./steps/step3.jsx"
+import Review from "./steps/step4.jsx"
+import { DEFAULT_STEP_INFO } from "./StepsConfig.jsx"
+import { useCallback, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export const steps = [
   {
-    title: 'Upload PDF',
-    stateKey: 'uploadPdf',
+    title: "Upload PDF",
+    stateKey: "uploadPdf",
     StepContent: UploadPdf,
   },
   {
-    title: 'Specify instance details',
-    stateKey: 'details',
+    title: "Specify instance details",
+    stateKey: "details",
     StepContent: Details,
   },
   {
-    title: 'Configure settings',
-    stateKey: 'advanced',
+    title: "Configure settings",
+    stateKey: "advanced",
     StepContent: Advanced,
   },
   {
-    title: 'Review and create',
-    stateKey: 'review',
+    title: "Review and create",
+    stateKey: "review",
     StepContent: Review,
   },
 ]
 
 export const i18nStrings = {
-  submitButton: 'Create DB instance',
+  submitButton: "Create DB instance",
   stepNumberLabel: stepNumber => `Step ${stepNumber}`,
   collapsedStepsLabel: (stepNumber, stepsCount) => `Step ${stepNumber} of ${stepsCount}`,
-  cancelButton: 'Cancel',
-  previousButton: 'Previous',
-  nextButton: 'Next',
+  cancelButton: "Cancel",
+  previousButton: "Previous",
+  nextButton: "Next",
 }
 
 export const useWizard = () => {
@@ -65,8 +65,8 @@ export const useWizard = () => {
   }
 
   const onCancel = () => {
-    console.log('Cancel')
-    navigate('/home')
+    console.log("Cancel")
+    navigate("/home")
   }
 
   const onSubmit = () => {

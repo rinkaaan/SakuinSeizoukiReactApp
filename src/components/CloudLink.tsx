@@ -1,5 +1,5 @@
-import { Link, LinkProps } from '@cloudscape-design/components'
-import { useNavigate } from 'react-router-dom'
+import { Link, LinkProps } from "@cloudscape-design/components"
+import { useNavigate } from "react-router-dom"
 
 export default function CloudLink({ href, ...props }: LinkProps) {
   const navigate = useNavigate()

@@ -14,9 +14,11 @@
   "dependencies": {
     "@cloudscape-design/components": "^3.0.456",
     "@cloudscape-design/global-styles": "^1.0.17",
+    "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.1"
+    "react-router-dom": "^6.20.1",
+    "socket.io-client": "^4.7.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",

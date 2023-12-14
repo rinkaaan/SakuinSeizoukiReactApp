@@ -1,7 +1,7 @@
-import React from 'react'
-import { Box, Container, FileUpload, FormField, Header, SpaceBetween } from '@cloudscape-design/components'
-import CloudButton from '../../../components/CloudButton'
-import { Form } from 'react-router-dom'
+import React from "react"
+import { Box, Container, Header, SpaceBetween } from "@cloudscape-design/components"
+import CloudButton from "../../../../components/CloudButton"
+import { Form } from "react-router-dom"
 
 // const Pdf = () => {
 //   const [value, setValue] = React.useState([])
@@ -42,7 +42,7 @@ const UploadPdf = ({ info: { uploadPdf }, onChange }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
   const childProps = { pdf, onChange }
   return (
-    <Box margin={{ bottom: 'l' }}>
+    <Box margin={{ bottom: "l" }}>
       <SpaceBetween size='l'>
         <Container header={<Header variant='h2'>Upload file</Header>}>
           {/*<Pdf/>*/}

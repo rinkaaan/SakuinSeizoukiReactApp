@@ -16,6 +16,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'warn',
     'semi': ['error', 'never'],
     '@typescript-eslint/semi': ['error', 'never'],
-    'quotes': ['error', 'single'],
+    'quotes': ['error', 'double'],
   },
 }
