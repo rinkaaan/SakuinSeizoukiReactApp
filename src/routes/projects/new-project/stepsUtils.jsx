@@ -66,7 +66,7 @@ export const useWizard = () => {
 
   const onCancel = () => {
     console.log("Cancel")
-    navigate("/home")
+    navigate("/projects/all")
   }
 
   const onSubmit = () => {

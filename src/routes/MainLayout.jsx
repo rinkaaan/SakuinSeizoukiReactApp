@@ -1,4 +1,4 @@
-import { AppLayout, SideNavigation } from "@cloudscape-design/components"
+import { AppLayout, Flashbar, SideNavigation } from "@cloudscape-design/components"
 import { Navigate, Outlet, useLocation, useMatches, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import CloudBreadcrumbGroup from "../components/CloudBreadcrumbGroup"
@@ -48,6 +48,22 @@ export default function MainLayout() {
   const [activeHref, setActiveHref] = useState()
   const [navigationOpen, setNavigationOpen] = useState(commonSlice.navigationOpen)
 
+  // useEffect(() => {
+  //   const id = uuid()
+  //   commonSlice.addNotification({
+  //     type: "success",
+  //     content: "Resource created successfully",
+  //     statusIconAriaLabel: "success",
+  //     dismissLabel: "Dismiss message",
+  //     dismissible: true,
+  //     id,
+  //     onDismiss: () => {
+  //       commonSlice.removeNotification(id)
+  //       revalidator.revalidate()
+  //     }
+  //   })
+  // }, [])
+
   useEffect(() => {
     // Go from last to first crumb, set activeHref to the first one that matches items
     for (const crumb of crumbs.reverse()) {
@@ -96,6 +112,9 @@ export default function MainLayout() {
         }}
         content={<Outlet/>}
         breadcrumbs={<BreadCrumbs/>}
+        notifications={
+          <Flashbar items={commonSlice.notifications}/>
+        }
         toolsHide
       />
     )

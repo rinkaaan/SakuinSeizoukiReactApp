@@ -1,4 +1,5 @@
 import { format, isToday, isYesterday, parseISO } from "date-fns"
+import { v4 } from "uuid"
 
 export function formatDate(inputDate?: string) {
   if (!inputDate) return null
@@ -15,4 +16,8 @@ export function formatDate(inputDate?: string) {
 
 export function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+export function uuid() {
+  return v4()
 }

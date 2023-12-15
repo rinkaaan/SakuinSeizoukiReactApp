@@ -1,34 +1,21 @@
-import { Container, ContentLayout, Header, SpaceBetween, TextContent } from "@cloudscape-design/components"
-import { ActionFunctionArgs, Form, useLoaderData, useRevalidator } from "react-router-dom"
-import { SettingsService, TimeOut, TimeService } from "../../../openapi-client"
+import { Alert, Container, ContentLayout, Header, SpaceBetween, TextContent } from "@cloudscape-design/components"
+import { ActionFunctionArgs, Form, useRevalidator } from "react-router-dom"
+import { SettingsService } from "../../../openapi-client"
 import CloudButton from "../../components/CloudButton.tsx"
 import { commonSlice } from "../../slices/commonSlice.ts"
 import { useEffect } from "react"
 import { socket } from "../../common/clients.ts"
-
-interface LoaderData {
-  time: TimeOut
-}
-
-export async function loader(): Promise<LoaderData> {
-  return {
-    time: await TimeService.getTime(),
-  }
-}
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData()
   const action = formData.get("action")
   if (action === "setup-dir") {
     await SettingsService.postSettingsAppDataDirectory()
-  } else if (action === "clear-dir") {
-    commonSlice.clearAppDataDirectory()
   }
   return null
 }
 
 export function Component() {
-  const { time } = useLoaderData() as LoaderData
   const revalidator = useRevalidator()
 
   useEffect(() => {
@@ -46,27 +33,33 @@ export function Component() {
   return (
     <ContentLayout
       header={
-        <Header variant='h1'>Settings</Header>
+        <Header variant="h1">Settings</Header>
       }
     >
-      <Container
-        header={<Header variant='h2'>Introduction</Header>}
-      >
-        <SpaceBetween size='s'>
+      <SpaceBetween size="l">
+        <Container header={<Header variant="h2">App Data Directory</Header>}>
+          <SpaceBetween size="s">
+            {commonSlice.appDataDirectory ? (
+              <Alert type="success">
+                App data directory is set to <b>{commonSlice.appDataDirectory}</b>.
+              </Alert>
+            ) : (
+              <Alert type="warning">
+                The app data directory needs to be set before you can use the application. Click the button below to select a folder.
+              </Alert>
+            )}
+            <Form method="POST">
+              <CloudButton formAction="submit">{commonSlice.appDataDirectory ? "Change" : "Set"} app data directory</CloudButton>
+              <input type="hidden" name="action" value="setup-dir"/>
+            </Form>
+          </SpaceBetween>
+        </Container>
+        <Container header={<Header variant="h2">About</Header>}>
           <TextContent>
-            <p>The current time is {time.time}</p>
-            <p>{commonSlice.appDataDirectory}</p>
+            <p>Version 0.1.0</p>
           </TextContent>
-          <Form method="POST">
-            <CloudButton formAction='submit'>Set app data directory</CloudButton>
-            <input type="hidden" name="action" value="setup-dir"/>
-          </Form>
-          <Form method="POST">
-            <CloudButton formAction='submit'>Clear app data directory</CloudButton>
-            <input type="hidden" name="action" value="clear-dir"/>
-          </Form>
-        </SpaceBetween>
-      </Container>
+        </Container>
+      </SpaceBetween>
     </ContentLayout>
   )
 }
