@@ -1,11 +1,19 @@
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from "react-router-dom"
 import MainLayout from "./routes/MainLayout.jsx"
+import { commonSlice } from "./slices/commonSlice.ts"
+import { OpenAPI } from "../openapi-client"
+
+OpenAPI.BASE = "http://127.0.0.1:34200"
 
 const router = createBrowserRouter([
   {
     id: "root",
     path: "/",
     Component: MainLayout,
+    loader: async () => {
+      await commonSlice.initAppDataDirectory()
+      return null
+    },
     children: [
       {
         path: "projects",

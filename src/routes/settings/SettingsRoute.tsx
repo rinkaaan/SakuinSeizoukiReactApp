@@ -20,7 +20,6 @@ export function Component() {
 
   useEffect(() => {
     socket.on("app-data-directory", (data: string) => {
-      console.log("socket app-data-directory")
       commonSlice.setAppDataDirectory(data)
       revalidator.revalidate()
     })

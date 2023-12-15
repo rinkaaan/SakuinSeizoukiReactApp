@@ -65,7 +65,6 @@ export const useWizard = () => {
   }
 
   const onCancel = () => {
-    console.log("Cancel")
     navigate("/projects/all")
   }
 
