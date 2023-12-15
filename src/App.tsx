@@ -1,8 +1,5 @@
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from "react-router-dom"
-import MainLayout from "./routes/MainLayout"
-import { useEffect } from "react"
-import { io } from "socket.io-client"
-import Cookies from "js-cookie"
+import MainLayout from "./routes/MainLayout.jsx"
 
 const router = createBrowserRouter([
   {
@@ -23,7 +20,6 @@ const router = createBrowserRouter([
           {
             path: "all",
             lazy: () => import("./routes/projects/all-projects/AllProjectsRoute.tsx"),
-            Component: Outlet,
           },
         ],
       },
@@ -52,17 +48,5 @@ function createCrumb(crumb: string, path: string) {
 }
 
 export default function App() {
-  useEffect(() => {
-    const socket = io("http://127.0.0.1:34200")
-    socket.on("connect", () => {
-      console.log("connected")
-    })
-
-    socket.on("app-data-directory", (data: string) => {
-      console.log(data)
-      Cookies.set("app-data-directory", data, { expires: 365 })
-    })
-  },[])
-
   return <RouterProvider router={router}/>
 }

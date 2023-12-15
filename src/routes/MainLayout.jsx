@@ -17,18 +17,20 @@ const items = [
   },
 ]
 
-export function BreadCrumbs() {
-  const matches = useMatches()
-  const crumbs = matches
+export function getCrumbs(matches) {
+  return matches
     .filter((match) => Boolean(match.handle?.crumbs))
     .map((match) => match.handle.crumbs())
-    .map((crumb) => {
-      return {
-        text: crumb.crumb,
-        href: crumb.path,
-      }
-    })
+}
 
+export function BreadCrumbs() {
+  const matches = useMatches()
+  const crumbs = getCrumbs(matches).map((crumb) => {
+    return {
+      text: crumb.crumb,
+      href: crumb.path,
+    }
+  })
   const showCrumbs = crumbs.length > 1
 
   return (
@@ -37,13 +39,12 @@ export function BreadCrumbs() {
     </div>
   )
 }
+
 export default function MainLayout() {
   const location = useLocation()
   const navigate = useNavigate()
   const matches = useMatches()
-  const crumbs = matches
-    .filter((match) => Boolean(match.handle?.crumbs))
-    .map((match) => match.handle.crumbs())
+  const crumbs = getCrumbs(matches)
   const [activeHref, setActiveHref] = useState()
   const [navigationOpen, setNavigationOpen] = useState(commonSlice.navigationOpen)
 
@@ -58,8 +59,18 @@ export default function MainLayout() {
     }
   }, [crumbs])
 
-  if (["/", "/projects"].includes(location.pathname)) {
-    return <Navigate to='/pets/all' replace={true} />
+  if (!commonSlice.appDataDirectory && location.pathname !== "/settings") {
+    return (
+      <Navigate
+        to="/settings"
+        replace={true}
+      />
+    )
+  } else if (["/", "/projects"].includes(location.pathname)) {
+    return <Navigate
+      to="/pets/all"
+      replace={true}
+    />
   } else {
     return (
       <AppLayout
@@ -77,6 +88,7 @@ export default function MainLayout() {
             items={items}
           />
         }
+        navigationHide={!commonSlice.appDataDirectory}
         navigationOpen={navigationOpen}
         onNavigationChange={(e) => {
           setNavigationOpen(e.detail.open)
